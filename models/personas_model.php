@@ -1,0 +1,39 @@
+<?php
+class personas_model{
+    /*private $db;
+    private $personas;
+ 
+    public function __construct(){
+        $this->db=Conectar::conexion();
+        $this->personas=array();
+    }
+
+    public function get_personas(){
+        $consulta=$this->db->query("select * from personas;");
+        while($filas=$consulta->fetch_assoc()){
+            $this->personas[]=$filas;
+        }
+        return $this->personas;
+    }*/
+
+    private $db;
+    private $personas;
+
+    public function __construct(){
+        require_once("db/db.php");
+        $this->db=Conectar::conexion();
+        $this->personas=array();
+    }
+
+    public function get_personas()
+    {
+        $consulta=$this->db->query("select * from personas");
+        while ($filas=$consulta->fetch(PDO::FETCH_ASSOC)) {
+            $this->personas[]=$filas;
+        }
+
+        return $this->personas;
+    }
+
+}
+?>
